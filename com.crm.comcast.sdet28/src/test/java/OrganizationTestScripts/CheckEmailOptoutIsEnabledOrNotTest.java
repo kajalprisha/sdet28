@@ -27,7 +27,7 @@ import com.crm.comcast.objectRepository.OrganizationInformationPage;
 import com.crm.comcast.objectRepository.OrganizationPage;
 
 public class CheckEmailOptoutIsEnabledOrNotTest extends BaseClass {
-		@Test
+		@Test//(groups = {"smokeTest"})
 		public void emailOptoutEnabledTest() throws Throwable {
 	
 		//generate random number
@@ -37,7 +37,7 @@ public class CheckEmailOptoutIsEnabledOrNotTest extends BaseClass {
 		ExpectedorganizationName=ExpectedorganizationName+randomNumber;
 	
 		//create organization
-		HomePage homepage = new HomePage(driver);
+		HomePage homepage = new HomePage(HomePage);
 		homepage.clickOrganizationLink();
 		
 		OrganizationPage orgpage = new OrganizationPage(driver);

@@ -27,7 +27,7 @@ public class ExcelUtility {
 	 */
 	public String getStringCellData(String sheetName,int rowNo,int cellNo) throws Throwable {
 		FileInputStream file = new FileInputStream(IPathConstants.EXCEL_FILEPATH);
-		Workbook workbook = WorkbookFactory.create(file);
+		WorkBookFactory	workbook = WorkBookFactory.create(file);
 		Sheet sheet = workbook.getSheet(sheetName);
 		Row row = sheet.getRow(rowNo);
 		Cell cell = row.getCell(cellNo);
@@ -43,7 +43,7 @@ public class ExcelUtility {
 	 */
 	public double getNumericCellData(String sheetName,int rowno,int cellno) throws Throwable{
 		FileInputStream file = new FileInputStream(IPathConstants.EXCEL_FILEPATH);
-		Workbook workbook = WorkbookFactory.create(file);
+		Workbook workbook = workbook.create(file);
 		return workbook.getSheet(sheetName).getRow(rowno).getCell(cellno).getNumericCellValue();
 	}
 	/**
@@ -55,7 +55,7 @@ public class ExcelUtility {
 
 	public Object[][] getmultipleData(String sheetName) throws Throwable {
 		FileInputStream file = new FileInputStream(IPathConstants.EXCEL_FILEPATH);
-		Workbook workbook = WorkbookFactory.create(file);
+		Workbook workbook = workbook.create(file);
 		Sheet sheet = workbook.getSheet(sheetName);
 		int rowNo = sheet.getLastRowNum();
 		int cellNo = sheet.getRow(0).getLastCellNum();
@@ -81,7 +81,7 @@ public class ExcelUtility {
  */
 public void WriteDataIntoExcel(String sheetName,int rowNo,int cellNO,String value) throws Throwable {
 	FileInputStream readfile = new FileInputStream(IPathConstants.EXCEL_FILEPATH);
-	Workbook workbook = WorkbookFactory.create(readfile);
+	Workbook workbook = workbook.create(readfile);
 	workbook.createSheet(sheetName).createRow(rowNo).createCell(cellNO).setCellValue(value);
 	
 	OutputStream writeFile = new FileOutputStream(IPathConstants.EXCEL_FILEPATH);

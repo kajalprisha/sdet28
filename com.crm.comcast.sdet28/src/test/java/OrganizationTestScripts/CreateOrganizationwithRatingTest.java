@@ -25,7 +25,7 @@ import com.crm.comcast.objectRepository.LoginPage;
 import com.crm.comcast.objectRepository.OrganizationPage;
 
 	public class CreateOrganizationwithRatingTest extends BaseClass {
-		@Test
+		@Test(groups = {"smokeTest","regressionTest"})
 		public void OrganizationWithRatingTest() throws Throwable {
 		
 	    //generate random number

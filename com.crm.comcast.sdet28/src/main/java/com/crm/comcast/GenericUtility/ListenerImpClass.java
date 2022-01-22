@@ -18,7 +18,7 @@ public class ListenerImpClass extends BaseClass implements ITestListener {
 		File source=event.getScreenshotAs(OutputType.FILE);
 		File destination=new File("./errorshot/"+testCaseName+".png");
 		source.renameTo(destination);
-		e.printStackTrace();
+		//e.printStackTrace();
 		
 	}
 

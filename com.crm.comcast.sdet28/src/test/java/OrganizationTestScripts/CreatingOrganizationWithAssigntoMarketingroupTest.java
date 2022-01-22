@@ -27,7 +27,7 @@ import com.crm.comcast.objectRepository.LoginPage;
 import com.crm.comcast.objectRepository.OrganizationPage;
 
 public class CreatingOrganizationWithAssigntoMarketingroupTest extends BaseClass {
-	@Test
+	@Test(groups = {"smokeTest","regressionTest"})
 	public void organizationWithMarketingGroupTest() throws Throwable {
 		
 				

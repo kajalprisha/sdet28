@@ -21,16 +21,18 @@ import com.crm.comcast.objectRepository.LoginPage;
 public class BaseClass {
 	// Object creation statement
 	public WebDriver driver;
+	public static WebDriver sdriver;
 	public FileUtility fUtil=new FileUtility();
 	public WebDriverUtility wUtil=new WebDriverUtility();
 	public JavaUtility jUtil=new JavaUtility();
 	public ExcelUtility eUtil=new ExcelUtility();
 	
-	@BeforeSuite
+	@BeforeSuite(groups = {"smokeTest","regressionTest"})
 	public void configBs() {
 		//connection to db
 		System.out.println("=====Connect to DB=======");
 	}
+	
 	@BeforeClass (groups={"smokeTest","regressionTest"})
 	public void configBc() throws Throwable {
 		//get the data from property file
@@ -49,13 +51,13 @@ public class BaseClass {
 			System.out.println("Browser not available");
 		}
 		
+		sdriver=driver;
 		driver.manage().window().maximize();
 		wUtil.WaitForPageLoad(driver);
 		driver.get(url);
 	}
 	
 	@BeforeMethod(groups= {"smokeTest","regressionTest"})
-	
 	public void configBm() throws Throwable {
 		//get the data from property file
 		String userName = fUtil.getPropertyFileData("username");
@@ -64,19 +66,21 @@ public class BaseClass {
 		LoginPage login = new LoginPage(driver);
 		login.loginToApplication(userName, password);
 	}
-	@AfterMethod
 	
+	@AfterMethod(groups = {"smokeTest","regressionTest"})
 	public void configAm() {
 		//logout from application
 		HomePage homepage = new HomePage(driver);
 		homepage.logout();
 	}
-	@AfterClass
+	
+	@AfterClass(groups = {"smokeTest","regressionTest"})
 	public void configAc() {
 		//closing or quitting the browser
 		driver.quit();
 	}
-	@AfterSuite
+	
+	@AfterSuite(groups = {"smokeTest","regressionTest"})
 	public void configAs() {
 		//closing the database connection
 		System.out.println("====close database connection====");
