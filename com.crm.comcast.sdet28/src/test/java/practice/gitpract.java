@@ -7,5 +7,9 @@ public class gitpract {
 	public void gitpract() {
 		System.out.println("for github pratice");
 	}
-
+	
+	@Test
+	public void gitpractagain() {
+		System.out.println("for github pratice again");
+	}
 }
